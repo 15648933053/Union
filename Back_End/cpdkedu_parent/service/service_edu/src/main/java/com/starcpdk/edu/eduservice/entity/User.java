@@ -7,6 +7,8 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -42,6 +44,7 @@ public class User implements Serializable {
     @ApiModelProperty(value = "活动积分")
     private Integer score;
 
+    @TableLogic
     @ApiModelProperty(value = "逻辑删除")
     private Boolean isDeleted;
 
