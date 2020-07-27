@@ -11,13 +11,13 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         //属性名称不是字段名称
-        this.setFieldValByName("gmtCreate", new Date(), metaObject);
-        this.setFieldValByName("gmtModified", new Date(), metaObject);
+        this.setFieldValByName("uniCreate", new Date(), metaObject);
+        this.setFieldValByName("uniModified", new Date(), metaObject);
         this.setFieldValByName("isDeleted", false, metaObject);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.setFieldValByName("gmtModified", new Date(), metaObject);
+        this.setFieldValByName("uniModified", new Date(), metaObject);
     }
 }

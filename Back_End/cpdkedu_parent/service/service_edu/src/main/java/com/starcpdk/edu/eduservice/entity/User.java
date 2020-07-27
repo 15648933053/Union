@@ -31,14 +31,17 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @ApiModelProperty(value = "id")
+    @TableId(value = "id", type = IdType.UUID)
+    private String id;
+
     @ApiModelProperty(value = "openID")
-    @TableId(value = "openid", type = IdType.ID_WORKER_STR)
     private String openid;
 
     @ApiModelProperty(value = "名字")
     private String name;
 
-    @ApiModelProperty(value = "生日")
+    @ApiModelProperty(value = "生日" , example = "2019-01-01 10:10:10")
     private Date birth;
 
     @ApiModelProperty(value = "活动积分")

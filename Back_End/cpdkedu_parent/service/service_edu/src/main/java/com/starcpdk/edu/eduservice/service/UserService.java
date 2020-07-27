@@ -14,7 +14,4 @@ import java.util.List;
  * @since 2020-07-27
  */
 public interface UserService extends IService<User> {
-
-    List<User> seluser(User user,int page,int num);
-    int insuser(User user);
 }

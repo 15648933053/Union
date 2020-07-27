@@ -20,15 +20,4 @@ import java.util.List;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-    List<User> seluser(User user,int page,int num);
-
-    @Insert("insert into user values(#{openid},name,birth,'0','0',#{uni_create},#{uni_modified})")
-    int insuser(User user);
-
-    @Delete("delete from user where openid = #{openid}")
-    int deluser(User user);
-
-
-
-
 }

@@ -19,18 +19,4 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
-
-    @Resource
-    private UserMapper userMapper;
-
-
-    @Override
-    public List<User> seluser(User user,int page,int num) {
-        return userMapper.seluser(user,page,num);
-    }
-
-    @Override
-    public int insuser(User user) {
-        return userMapper.insuser(user);
-    }
 }
