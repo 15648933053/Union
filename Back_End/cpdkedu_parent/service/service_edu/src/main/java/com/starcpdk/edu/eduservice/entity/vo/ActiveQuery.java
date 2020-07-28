@@ -13,6 +13,9 @@ public class ActiveQuery {
     @ApiModelProperty(value = "活动时间")
     private String date;
 
+    @ApiModelProperty(value = "活动时间")
+    private String datejiezhi;
+
     @ApiModelProperty(value = "活动积分")
     private String score;
 }

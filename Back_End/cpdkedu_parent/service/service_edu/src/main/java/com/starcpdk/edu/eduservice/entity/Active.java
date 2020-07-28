@@ -40,6 +40,9 @@ public class Active implements Serializable {
     @ApiModelProperty(value = "活动日期" , example = "2019-01-01 10:10:10")
     private Date date;
 
+    @ApiModelProperty(value = "活动日期" , example = "2019-01-01 10:10:10")
+    private Date datejiezhi;
+
     @ApiModelProperty(value = "活动分数")
     private Integer score;
 

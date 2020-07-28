@@ -1,25 +1,35 @@
 <template>
   <div class="app-container">
     <!--查询表单-->
-    <el-form :inline="true" class="demo-form-inline" >
-      <el-form-item style="margin-right: 60px" label="活动名称" >
+    <el-form :inline="true" class="demo-form-inline">
+      <el-form-item label="名称" style="margin-right: 0px">
         <el-input v-model="activeQuery.name" placeholder="活动名称" />
       </el-form-item>
 
-      <el-form-item label="活动积分"  style="margin-right: 60px">
+      <el-form-item label="积分" style="margin-right: 0px">
         <el-input-number
           :min="0"
           v-model="activeQuery.score"
           controls-position="right"
-          placeholder=""
+          placeholder
         />
       </el-form-item>
 
-      <el-form-item label="活动时间" style="margin-right: 60px">
+      <el-form-item label="开始时间" style="margin-right: 0px">
         <el-date-picker
           v-model="activeQuery.date"
           type="datetime"
-          placeholder="选择活动开始时间"
+          placeholder="选择活动起始时间"
+          value-format="yyyy-MM-dd HH:mm:ss"
+          default-time="00:00:00"
+        />
+      </el-form-item>
+
+      <el-form-item label="截止时间" style="margin-right: 0px">
+        <el-date-picker
+          v-model="activeQuery.datejiezhi"
+          type="datetime"
+          placeholder="选择活动截止时间"
           value-format="yyyy-MM-dd HH:mm:ss"
           default-time="00:00:00"
         />
@@ -42,14 +52,15 @@
         <template slot-scope="scope">{{ (page - 1) * limit + scope.$index + 1 }}</template>
       </el-table-column>
 
-      <el-table-column prop="name" label="活动名称" width="250"/>
+      <el-table-column prop="name" label="活动名称" width="220" />
 
-      <el-table-column prop="score" label="活动积分" width="250" />
+      <el-table-column prop="score" label="活动积分" width="220" />
 
-      <el-table-column prop="date" label="活动时间" width="250" />
+      <el-table-column prop="date" label="活动开始时间" width="220" />
 
-      <el-table-column prop="content" label="活动内容"/>
+      <el-table-column prop="datejiezhi" label="活动截止时间" width="220" />
 
+      <el-table-column prop="content" label="活动内容" />
 
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">

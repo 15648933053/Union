@@ -64,6 +64,7 @@ public class ActiveController {
         String name = activeQuery.getName();
         String date = activeQuery.getDate();
         String score = activeQuery.getScore();
+        String datejiezhi = activeQuery.getDatejiezhi();
 
         if (!StringUtils.isEmpty(name)){//判断name是否为空或者空字符串name
             wrapper.like("name" , name);//数据库字段名   ，    传入的值
@@ -71,6 +72,10 @@ public class ActiveController {
 
         if (!StringUtils.isEmpty(date)){
             wrapper.ge("date" , date);
+        }
+
+        if (!StringUtils.isEmpty(datejiezhi)){
+            wrapper.le("datejiezhi" , datejiezhi);
         }
 
         if (!StringUtils.isEmpty(score)){

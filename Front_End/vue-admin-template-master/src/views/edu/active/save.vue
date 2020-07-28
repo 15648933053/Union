@@ -5,11 +5,21 @@
         <el-input v-model="active.name" />
       </el-form-item>
 
-      <el-form-item label="活动日期">
+      <el-form-item label="活动开始日期">
         <el-date-picker
           v-model="active.date"
           type="datetime"
-          placeholder="选择活动日期"
+          placeholder="选择活动开始时间"
+          value-format="yyyy-MM-dd HH:mm:ss"
+          default-time="00:00:00"
+        />
+      </el-form-item>
+
+      <el-form-item label="活动截止日期">
+        <el-date-picker
+          v-model="active.datejiezhi"
+          type="datetime"
+          placeholder="选择活动截止时间"
           value-format="yyyy-MM-dd HH:mm:ss"
           default-time="00:00:00"
         />
@@ -38,7 +48,7 @@ import PanThumb from "@/components/PanThumb";
 import Tinymce from "@/components/Tinymce"; //引入组件
 
 export default {
-  components: { ImageCropper, PanThumb , Tinymce },
+  components: { ImageCropper, PanThumb, Tinymce },
   data() {
     return {
       active: {
@@ -91,7 +101,7 @@ export default {
         //修改
         console.log("执行了修改讲师的方法");
         this.updateActive();
-      }else {
+      } else {
         //添加
         console.log("执行了添加讲师的方法");
         this.saveActive();
@@ -100,22 +110,22 @@ export default {
 
     //添加活动方法
     saveActive() {
-      active.addActive(this.active).then(response => {
+      active.addActive(this.active).then((response) => {
         //添加成功
         //提示成功
         if (response.success == true) {
           this.$message({
             type: "success",
-            message: "增加成功!"
+            message: "增加成功!",
           });
           //回到列表页面 , 路由跳转
           this.$router.push({
-            path: "/active/table"
+            path: "/active/table",
           });
         } else {
           this.$message({
             type: "success",
-            message: "增加失败!"
+            message: "增加失败!",
           });
         }
       });
