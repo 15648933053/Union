@@ -1,5 +1,16 @@
 <template>
   <div class="app-container">
+    <div @click="dow">
+      <el-form>
+        <el-form-item>
+          <el-tag>
+            <i class="el-icon-download" />
+            <a :href="'/static/活动列表.xlsx'">点击下载活动列表</a>
+          </el-tag>
+        </el-form-item>
+      </el-form>
+    </div>
+
     <!--查询表单-->
     <el-form :inline="true" class="demo-form-inline">
       <el-form-item label="名称" style="margin-right: 0px">
@@ -52,15 +63,15 @@
         <template slot-scope="scope">{{ (page - 1) * limit + scope.$index + 1 }}</template>
       </el-table-column>
 
-      <el-table-column prop="name" label="活动名称" width="220" />
+      <el-table-column prop="name" label="活动名称" />
 
-      <el-table-column prop="score" label="活动积分" width="220" />
+      <el-table-column prop="score" label="活动积分"/>
 
-      <el-table-column prop="date" label="活动开始时间" width="220" />
+      <el-table-column prop="date" label="活动开始时间" />
 
-      <el-table-column prop="datejiezhi" label="活动截止时间" width="220" />
+      <el-table-column prop="datejiezhi" label="活动截止时间" />
 
-      <el-table-column prop="content" label="活动内容" />
+      <el-table-column prop="status" label="活动状态" />
 
       <el-table-column label="操作" width="200" align="center">
         <template slot-scope="scope">
@@ -89,6 +100,7 @@
   </div>
 </template>
 
+
 <script>
 //引入调用active.js文件
 import active from "@/api/edu/active.js";
@@ -98,7 +110,7 @@ export default {
   // data:{
 
   // },
-  data() {
+  data: function () {
     // 定义变量和初始值
     return {
       listLoading: true, //是否显示加载中
@@ -110,14 +122,24 @@ export default {
     };
   },
 
-  created() {
+  created: function () {
     // 页面渲染之前执行 , 一般调用methods定义的方法
     //调用
     this.getList();
   },
   methods: {
+    dow: function () {
+      active.dow().then((response) => {
+        if (response.success == true) {
+          this.$message({
+            type: "success",
+            message: "数据导出成功!",
+          });
+        }
+      });
+    },
     // 创建具体的方法 , 调用active..js定义的方法
-    getList(page = 1) {
+    getList: function (page = 1) {
       this.listLoading = true;
       this.page = page;
       active
@@ -138,7 +160,7 @@ export default {
     },
 
     //清空条件
-    clear() {
+    clear: function () {
       //将输入项数据清空
       this.activeQuery = {};
       //查询所有讲师数据
@@ -146,7 +168,7 @@ export default {
     },
 
     //删除讲师的方法
-    removeDataById(id) {
+    removeDataById: function (id) {
       this.$confirm("此操作将永久删除讲师记录, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",

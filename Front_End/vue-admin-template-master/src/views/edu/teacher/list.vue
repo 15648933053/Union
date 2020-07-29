@@ -43,9 +43,15 @@
         <template slot-scope="scope">{{ (page - 1) * limit + scope.$index + 1 }}</template>
       </el-table-column>
 
+      <el-table-column prop="openid" label="oppenid"/>
+
       <el-table-column prop="name" label="教师名称"/>
 
-      <el-table-column prop="score" label="教师积分" width="220" />
+      <el-table-column prop="phone" label="教师电话"/>
+
+      <el-table-column prop="position" label="教师职称"/>
+
+      <el-table-column prop="score" label="教师积分"/>
 
       <el-table-column prop="birth" label="教师生日" width="250" />
 
@@ -87,7 +93,7 @@ export default {
   // data:{
 
   // },
-  data() {
+  data:function() {
     // 定义变量和初始值
     return {
       listLoading: true, //是否显示加载中
@@ -99,14 +105,14 @@ export default {
     };
   },
 
-  created() {
+  created:function() {
     // 页面渲染之前执行 , 一般调用methods定义的方法
     //调用
     this.getList();
   },
   methods: {
     // 创建具体的方法 , 调用teacher..js定义的方法
-    getList(page = 1) {
+    getList:function(page = 1) {
       this.listLoading = true;
       this.page = page;
       teacher
@@ -127,7 +133,7 @@ export default {
     },
 
     //清空条件
-    clear() {
+    clear:function() {
       //将输入项数据清空
       this.teacherQuery = {};
       //查询所有讲师数据
@@ -135,7 +141,7 @@ export default {
     },
 
     //删除讲师的方法
-    removeDataById(id) {
+    removeDataById:function(id) {
       this.$confirm("此操作将永久删除讲师记录, 是否继续?", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",

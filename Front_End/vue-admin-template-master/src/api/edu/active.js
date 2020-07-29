@@ -42,5 +42,12 @@ export default {
             method: 'post',
             data: active
           })
+    },
+
+    dow(){
+        return request({
+            url: `/eduservice/active/dow`,
+            method: 'get'
+          })
     }
 }

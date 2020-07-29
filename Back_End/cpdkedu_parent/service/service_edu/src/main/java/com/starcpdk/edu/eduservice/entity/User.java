@@ -41,6 +41,12 @@ public class User implements Serializable {
     @ApiModelProperty(value = "名字")
     private String name;
 
+    @ApiModelProperty(value = "老师电话")
+    private String phone;
+
+    @ApiModelProperty(value = "老师职位")
+    private String position;
+
     @ApiModelProperty(value = "生日" , example = "2019-01-01 10:10:10")
     private Date birth;
 

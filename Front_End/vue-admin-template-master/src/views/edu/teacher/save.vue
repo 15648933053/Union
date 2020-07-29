@@ -15,13 +15,21 @@
         />
       </el-form-item>
 
-      <el-form-item label="老师积分">
+      <el-form-item label="教师积分">
         <el-input-number
           :min="0"
           v-model="teacher.score"
           controls-position="right"
           placeholder=""
-        />元
+        />
+      </el-form-item>
+      
+      <el-form-item label="教师电话">
+        <el-input v-model="teacher.phone" />
+      </el-form-item>
+
+      <el-form-item label="教师职称">
+        <el-input v-model="teacher.position" />
       </el-form-item>
 
       <el-form-item>
@@ -39,7 +47,7 @@ import PanThumb from "@/components/PanThumb";
 
 export default {
   components: { ImageCropper, PanThumb },
-  data() {
+  data:function() {
     return {
       teacher: {
         name: "",
@@ -62,19 +70,19 @@ export default {
     },
   },
 
-  created() {
+  created:function() {
     console.log("created");
     this.init();
   },
 
   methods: {
-    close() {
+    close:function() {
       // 关闭上传弹框的方法
       this.imagecropperShow = false;
       this.imagecropperKey = this.imagecropperKey + 1;
     },
 
-    init() {
+    init:function() {
       if (this.$route.params && this.$route.params.id) {
         const id = this.$route.params.id;
         this.getInfo(id);
@@ -83,7 +91,7 @@ export default {
       }
     },
     
-    saveOrUpdate() {
+    saveOrUpdate:function() {
       //判断是修改还是添加
       //根据teacher是否有id做判断
       if (this.teacher.id) {
@@ -94,7 +102,7 @@ export default {
     },
    
     //根据讲师id查询方法
-    getInfo(id) {
+    getInfo:function(id) {
       teacherApi.getTeacherInfo(id).then((response) => {
         if (response.success == true) {
           this.teacher = response.data.teacher;
@@ -105,7 +113,7 @@ export default {
       });
     },
     //修改讲师方法
-    updateTeacher() {
+    updateTeacher:function() {
       teacherApi.updateTeacherInfo(this.teacher).then((response) => {
         if (response.success == true) {
           //提示信息

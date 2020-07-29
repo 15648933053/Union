@@ -191,13 +191,27 @@
         </dependencies>
     </dependencyManagement>
 
-<!--    <build>-->
+    <build>
+        <finalName>union</finalName>
 <!--        <plugins>-->
 <!--            <plugin>-->
 <!--                <groupId>org.springframework.boot</groupId>-->
 <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
 <!--            </plugin>-->
 <!--        </plugins>-->
-<!--    </build>-->
+
+        <resources>
+            <resource>
+                <directory>src/main/resource</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.tld</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+
+    </build>
 
 </project>

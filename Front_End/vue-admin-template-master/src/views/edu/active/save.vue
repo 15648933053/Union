@@ -49,7 +49,7 @@ import Tinymce from "@/components/Tinymce"; //引入组件
 
 export default {
   components: { ImageCropper, PanThumb, Tinymce },
-  data() {
+  data:function() {
     return {
       active: {
         name: "",
@@ -73,19 +73,19 @@ export default {
     },
   },
 
-  created() {
+  created:function() {
     console.log("created");
     this.init();
   },
 
   methods: {
-    close() {
+    close:function() {
       // 关闭上传弹框的方法
       this.imagecropperShow = false;
       this.imagecropperKey = this.imagecropperKey + 1;
     },
 
-    init() {
+    init:function() {
       if (this.$route.params && this.$route.params.id) {
         const id = this.$route.params.id;
         this.getInfo(id);
@@ -94,7 +94,7 @@ export default {
       }
     },
 
-    saveOrUpdate() {
+    saveOrUpdate:function() {
       //判断是修改还是添加
       //根据active是否有id做判断
       if (this.active.id) {
@@ -109,7 +109,7 @@ export default {
     },
 
     //添加活动方法
-    saveActive() {
+    saveActive:function() {
       active.addActive(this.active).then((response) => {
         //添加成功
         //提示成功
@@ -132,7 +132,7 @@ export default {
     },
 
     //根据活动id查询方法
-    getInfo(id) {
+    getInfo:function(id) {
       active.getActiveInfo(id).then((response) => {
         if (response.success == true) {
           this.active = response.data.active;
@@ -143,7 +143,7 @@ export default {
       });
     },
     //修改活动方法
-    updateActive() {
+    updateActive:function() {
       active.updateActiveInfo(this.active).then((response) => {
         if (response.success == true) {
           //提示信息
